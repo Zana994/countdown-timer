@@ -1,0 +1,365 @@
+@import "./reset";
+@import "./variables";
+@import "./animation";
+
+:root { 
+    --content-front-days: '';
+    --content-front-days-num: 0;
+    --content-back-days-num: 0;
+    --content-back-days: '';
+    --content-bottom-days: var(--content-front-days);
+    --content-wrap-days: var(--content-back-days);
+
+    --content-front-hours: '';
+    --content-front-hours-num: 0;
+    --content-back-hours-num: 0;
+    --content-back-hours: '';
+    --content-bottom-hours: var(--content-front-hours);
+    --content-wrap-hours: var(--content-back-hours);
+
+    --content-front-minutes: '';
+    --content-front-minutes-num: 0;
+    --content-back-minutes-num: 0;
+    --content-back-minutes: '';
+    --content-bottom-minutes: var(--content-front-minutes);
+    --content-wrap-minutes: var(--content-back-minutes);
+
+    --content-front-seconds: '';
+    --content-front-seconds-num: 0;
+    --content-back-seconds-num: 0;
+    --content-back-seconds: '';
+    --content-bottom-seconds: var(--content-front-seconds);
+    --content-wrap-seconds: var(--content-back-seconds);
+}
+
+html { height: 100%;}
+body {
+    min-height: 100%;
+    position: relative;
+    background-color: $bgd-color;
+    font-size: 14px;
+}
+
+.bgd-img {
+    @include position-and-size(absolute, 100%, 100%);
+    @include bgd-style(url(images/bg-stars.svg));
+    &::after {
+        @include pseudo-element-style(100%, 197px);
+        bottom: 0;
+        @include bgd-style(url(images/pattern-hills.svg));
+        background-size: cover;
+    }
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1200px;
+    min-height: 100vh;
+    position: relative;
+    margin: auto;
+    @include flex-pos(flex-start, center, column); 
+}
+
+h2 {
+    @include text-style($title-color, $font-family, 1.3rem, uppercase, 0.5rem);
+    margin: 6rem 0;
+}
+
+p.name {
+    position: absolute;
+    @include text-style($text-color, $font-family, inherit, none, 0.1rem);
+    bottom: 2rem;
+}
+
+.cards-container {
+    @include flex-pos(space-between, center, row);
+    @include position-and-size(relative, 70%, 200px);
+    .days, .hours, .minutes, .seconds {
+        width: 25%;
+        height: 100%;
+        @include flex-pos(space-around, center, column);
+        p {
+            @include text-style($text-color, $font-family, inherit, uppercase, 0.5rem);
+        }
+    }
+}
+
+/* GENERAL STYLE FOR ALL CARDS (SECONDS, MINUTES, HOURS AND DAYS) */
+
+div.cards-wrap {
+    @include position-and-size(relative, 70%, 120px);
+    background-image: linear-gradient(to bottom, #2a2c40 50%, #31334a 50%);
+    border-radius: 10px;
+    perspective: 400px;
+    box-shadow: 0 9px 0 0 hsl(234, 17%, 12%);
+    .card {
+        @include position-and-size(relative, 100%, 50%);
+        background-image: linear-gradient(to bottom, #2a2c40);
+        border-radius: 10px;
+        transform: rotateX(-5deg);
+        .front, .back {
+            @include position-and-size(absolute, 100%, 100%);
+            @include text-style($number-color, $font-family, 80px, none, none);
+            backface-visibility: hidden;
+            overflow: hidden;
+            background-image: linear-gradient(to bottom, #2a2c40);
+            border-radius: 10px;
+        }
+        .front::after {
+            top: 30px;
+            @include flex-pos(center, center, row);
+        }
+        .back {
+            transform: rotateX(180deg);
+            background-image: linear-gradient(to bottom, #31334a);
+        }
+        .back::after {
+            bottom: 31px;
+            @include flex-pos(center, center, row);
+        }
+    }
+}
+
+/* SET FLIP ANIMATION FOR ALL CARDS */
+div.card.flip { @include animation-style(flip, bottom);}
+
+/* SET DIFFERENT ANIMATION FOR FRONT CARDS */
+div.card {
+    .front.flip-d {
+        &::after { @include animation-style2(after-flip-days, forwards);}
+    }  
+    .front.flip-h { 
+        &::after { @include animation-style2(after-flip-hours, forwards);}
+    }
+    .front.flip-m {
+        &::after { @include animation-style2(after-flip-minutes, forwards);}
+    }
+    .front.flip-s {
+        &::after { @include animation-style2(after-flip-seconds, forwards);}
+    }
+}
+
+/* PSEUDO-ELEMENT STYLE FOR ALL FRONT AND BACK CARDS */
+.front.d { 
+    &::after { @include pseudo-element-style(100%, 100%, var(--content-front-days));}
+}
+
+.front.h { 
+    &::after { @include pseudo-element-style(100%, 100%, var(--content-front-hours));}
+}
+.front.m { 
+    &::after { @include pseudo-element-style(100%, 100%, var(--content-front-minutes));}
+}
+.front.s { 
+    &::after { @include pseudo-element-style(100%, 100%, var(--content-front-seconds));}
+}
+.back.d {
+    &::after { @include pseudo-element-style(100%, 100%, var(--content-back-days));}
+}
+.back.h {
+    &::after { @include pseudo-element-style(100%, 100%, var(--content-back-hours));}
+}
+.back.m {
+    &::after { @include pseudo-element-style(100%, 100%, var(--content-back-minutes));}
+}
+.back.s {
+    &::after { @include pseudo-element-style(100%, 100%, var(--content-back-seconds));}
+}
+
+/* GENERAL STYLE FOR ALL BOTTOM CARDS */
+.card-bottom {
+    @include position-and-size(absolute, 100%, 50%);
+    bottom: 0;
+    @include text-style($number-color, $font-family, 80px, none, none);
+    overflow: hidden;
+    border-radius: 10px;
+    transform: rotateX(5deg);
+    transform-origin: top;
+    background-image: linear-gradient(to bottom, #31334a);
+    &::after {
+        bottom: 30px;
+        @include flex-pos(center, center, row);
+    }
+}
+
+/* SET ANIMATION AND STYLE FOR PSEUDO-ELEMENTS OF BOTTOM CARDS */
+.card-bottom.d {
+    &::after { @include pseudo-element-style(100%, 100%, var(--content-bottom-days));}
+}
+.card-bottom.d.flip-d {
+    &::after { @include animation-style2(after-flip-days, forwards);}
+}
+.card-bottom.h {
+    &::after { @include pseudo-element-style(100%, 100%, var(--content-bottom-hours));}
+}
+.card-bottom.h.flip-h {
+    &::after { @include animation-style2(after-flip-hours, forwards);}
+}
+.card-bottom.m {
+    &::after { @include pseudo-element-style(100%, 100%, var(--content-bottom-minutes));}
+}
+.card-bottom.m.flip-m {
+    &::after { @include animation-style2(after-flip-minutes, forwards);}
+}
+.card-bottom.s {
+    &::after { @include pseudo-element-style(100%, 100%, var(--content-bottom-seconds));}
+}
+.card-bottom.s.flip-s {
+    &::after { @include animation-style2(after-flip-seconds, forwards);}
+}
+
+
+/* SET 'BEFORE' STYLE FOR WRAPPER OF EACH CARD */
+.cards-wrap::before {
+    bottom: 30px;
+    @include flex-pos(center, center, row);
+    @include text-style($number-color, $font-family, 80px, none, none);
+}
+.cards-wrap.d::before { @include pseudo-element-style(100%, 50%, var(--content-wrap-days));}
+.cards-wrap.h::before { @include pseudo-element-style(100%, 50%, var(--content-wrap-hours));}
+.cards-wrap.m::before { @include pseudo-element-style(100%, 50%, var(--content-wrap-minutes));}
+.cards-wrap.s::before { @include pseudo-element-style(100%, 50%, var(--content-wrap-seconds));}
+
+
+/* ADD BLACK CIRCLES ON TOP OF CARDS (LEFT AND RIGHT) */
+.card-style {
+    @include position-and-size(absolute, 100%, 1px);
+    z-index: 111;
+    &::before, &::after {
+        @include pseudo-element-style(6px, 12px);
+        top: -6px;
+        background-image: radial-gradient(25px circle, #15161d, transparent);  
+        border-radius: 0 6px 6px 0;
+    }
+    &::before { left: 0;}
+    &::after {
+        right: 0;
+        border-radius: 6px 0 0 6px
+    }
+}
+
+/* SOCIAL MEDIA SECTION */
+.social-media {
+    @include position-and-size(absolute, 200px, 30px);
+    @include flex-pos(space-evenly, center, row);
+    bottom: 6rem;
+    span {
+        width: 24px;
+        height: 24px;
+        display: block;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    .fb-icon {
+        @include bgd-style(url(images/icon-facebook.svg));
+        &:hover { @include bgd-style(url(images/icon-fbPink.svg));}
+    }
+    .insta-icon {
+        @include bgd-style(url(images/icon-instagram.svg));
+        &:hover { @include bgd-style(url(images/icon-instagramPink.svg));}
+    }
+    .pin-icon {
+        @include bgd-style(url(images/icon-pinterest.svg));
+        &:hover { @include bgd-style(url(images/icon-pinterestPink.svg));}
+    }
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (min-width: 1470px) {
+    div.cards-container { width: 75%;}
+    .bgd-img {
+        &::after { height: 25%;}
+    }
+}
+
+@media only screen and (min-width: 1700px) {
+    .bgd-img {
+        &::after { height: 30%;}
+    }
+    h2 { font-size: 1.5rem;}
+}
+
+@media only screen and (max-width: 1200px) {
+    div.cards-wrap { 
+        div.card {
+            .front, .back { font-size: 70px;}
+        }
+    }
+    div.card-bottom { font-size: 70px;}
+    div.cards-wrap::before { font-size: 70px;}
+}
+
+@media only screen and (max-width: 1050px) {
+    div.cards-wrap { width: 75%;}
+}
+@media only screen and (max-width: 900px) {
+    div.cards-container { width: 75%;}
+    div.cards-wrap {
+        width: 85%;
+        div.card {
+            .front, .back { font-size: 65px;}
+        }
+    }
+    div.card-bottom { font-size: 65px;}
+    div.cards-wrap::before { font-size: 65px;}
+}
+@media only screen and (max-width: 768px) {
+    div.cards-container { 
+        width: 90%;
+        .days, .hours, .minutes, .seconds {
+            p { font-size: 12px;}
+        }
+    }
+    div.cards-wrap { 
+        width: 75%;
+    div.card {
+        .front, .back { font-size: 60px;}
+    }
+}
+    div.card-bottom { font-size: 60px;}
+    div.cards-wrap::before { font-size: 60px;}
+}
+@media only screen and (max-width: 600px) {
+    div.cards-container { 
+        width: 100%;
+        .days, .hours, .minutes, .seconds {
+            p { 
+                font-size: 11px;
+                letter-spacing: 0.3rem;
+            }
+        }
+    }
+    div.cards-wrap {
+        div.card {
+            .front, .back { font-size: 50px;}
+        }
+    }
+    div.card-bottom { font-size: 50px;}
+    div.cards-wrap::before { font-size: 50px;}
+}
+@media only screen and (max-width: 470px) {
+    h2 {
+        font-size: 1rem;
+        text-align: center;
+        width: 85%;
+    }
+    div.cards-container { 
+        .days, .hours, .minutes, .seconds {
+            p { 
+                font-size: 10px;
+                letter-spacing: 0.2rem;
+            }
+        }
+    }
+    div.cards-wrap {
+        height: 100px;
+        width: 80%;
+    }
+    p.name { 
+        font-size: 11px;
+        text-align: center;
+    }
+}
+

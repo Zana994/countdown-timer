@@ -1,0 +1,783 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+html {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+@font-face {
+  font-family: RedHat-Bold;
+  src: url(fonts/Red_Hat_Text/RedHatText-Bold.ttf);
+}
+
+@-webkit-keyframes flip {
+  100% {
+    -webkit-transform: rotateX(-180deg);
+            transform: rotateX(-180deg);
+    z-index: 2;
+  }
+}
+
+@keyframes flip {
+  100% {
+    -webkit-transform: rotateX(-180deg);
+            transform: rotateX(-180deg);
+    z-index: 2;
+  }
+}
+
+@-webkit-keyframes after-flip-days {
+  100% {
+    content: var(--content-back-days);
+  }
+}
+
+@keyframes after-flip-days {
+  100% {
+    content: var(--content-back-days);
+  }
+}
+
+@-webkit-keyframes after-flip-hours {
+  100% {
+    content: var(--content-back-hours);
+  }
+}
+
+@keyframes after-flip-hours {
+  100% {
+    content: var(--content-back-hours);
+  }
+}
+
+@-webkit-keyframes after-flip-minutes {
+  100% {
+    content: var(--content-back-minutes);
+  }
+}
+
+@keyframes after-flip-minutes {
+  100% {
+    content: var(--content-back-minutes);
+  }
+}
+
+@-webkit-keyframes after-flip-seconds {
+  100% {
+    content: var(--content-back-seconds);
+  }
+}
+
+@keyframes after-flip-seconds {
+  100% {
+    content: var(--content-back-seconds);
+  }
+}
+
+:root {
+  --content-front-days: '';
+  --content-front-days-num: 0;
+  --content-back-days-num: 0;
+  --content-back-days: '';
+  --content-bottom-days: var(--content-front-days);
+  --content-wrap-days: var(--content-back-days);
+  --content-front-hours: '';
+  --content-front-hours-num: 0;
+  --content-back-hours-num: 0;
+  --content-back-hours: '';
+  --content-bottom-hours: var(--content-front-hours);
+  --content-wrap-hours: var(--content-back-hours);
+  --content-front-minutes: '';
+  --content-front-minutes-num: 0;
+  --content-back-minutes-num: 0;
+  --content-back-minutes: '';
+  --content-bottom-minutes: var(--content-front-minutes);
+  --content-wrap-minutes: var(--content-back-minutes);
+  --content-front-seconds: '';
+  --content-front-seconds-num: 0;
+  --content-back-seconds-num: 0;
+  --content-back-seconds: '';
+  --content-bottom-seconds: var(--content-front-seconds);
+  --content-wrap-seconds: var(--content-back-seconds);
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  position: relative;
+  background-color: #1e1f29;
+  font-size: 14px;
+}
+
+.bgd-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url(images/bg-stars.svg) center center no-repeat;
+}
+
+.bgd-img::after {
+  position: absolute;
+  width: 100%;
+  height: 197px;
+  content: "";
+  bottom: 0;
+  background: url(images/pattern-hills.svg) center center no-repeat;
+  background-size: cover;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1200px;
+  min-height: 100vh;
+  position: relative;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+h2 {
+  color: white;
+  font-family: RedHat-Bold;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  margin: 6rem 0;
+}
+
+p.name {
+  position: absolute;
+  color: #8486a9;
+  font-family: RedHat-Bold;
+  font-size: inherit;
+  text-transform: none;
+  letter-spacing: 0.1rem;
+  bottom: 2rem;
+}
+
+.cards-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: relative;
+  width: 70%;
+  height: 200px;
+}
+
+.cards-container .days, .cards-container .hours, .cards-container .minutes, .cards-container .seconds {
+  width: 25%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.cards-container .days p, .cards-container .hours p, .cards-container .minutes p, .cards-container .seconds p {
+  color: #8486a9;
+  font-family: RedHat-Bold;
+  font-size: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+}
+
+/* GENERAL STYLE FOR ALL CARDS (SECONDS, MINUTES, HOURS AND DAYS) */
+div.cards-wrap {
+  position: relative;
+  width: 70%;
+  height: 120px;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #2a2c40), color-stop(50%, #31334a));
+  background-image: linear-gradient(to bottom, #2a2c40 50%, #31334a 50%);
+  border-radius: 10px;
+  -webkit-perspective: 400px;
+          perspective: 400px;
+  -webkit-box-shadow: 0 9px 0 0 #191a24;
+          box-shadow: 0 9px 0 0 #191a24;
+}
+
+div.cards-wrap .card {
+  position: relative;
+  width: 100%;
+  height: 50%;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#2a2c40));
+  background-image: linear-gradient(to bottom, #2a2c40);
+  border-radius: 10px;
+  -webkit-transform: rotateX(-5deg);
+          transform: rotateX(-5deg);
+}
+
+div.cards-wrap .card .front, div.cards-wrap .card .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  color: #fb6087;
+  font-family: RedHat-Bold;
+  font-size: 80px;
+  text-transform: none;
+  letter-spacing: none;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  overflow: hidden;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#2a2c40));
+  background-image: linear-gradient(to bottom, #2a2c40);
+  border-radius: 10px;
+}
+
+div.cards-wrap .card .front::after {
+  top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+div.cards-wrap .card .back {
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#31334a));
+  background-image: linear-gradient(to bottom, #31334a);
+}
+
+div.cards-wrap .card .back::after {
+  bottom: 31px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+/* SET FLIP ANIMATION FOR ALL CARDS */
+div.card.flip {
+  -webkit-animation-name: flip;
+          animation-name: flip;
+  -webkit-animation-duration: .8s;
+          animation-duration: .8s;
+  -webkit-animation-fill-mode: backwards;
+          animation-fill-mode: backwards;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+}
+
+/* SET DIFFERENT ANIMATION FOR FRONT CARDS */
+div.card .front.flip-d::after {
+  -webkit-animation-name: after-flip-days;
+          animation-name: after-flip-days;
+  -webkit-animation-duration: .8s;
+          animation-duration: .8s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+div.card .front.flip-h::after {
+  -webkit-animation-name: after-flip-hours;
+          animation-name: after-flip-hours;
+  -webkit-animation-duration: .8s;
+          animation-duration: .8s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+div.card .front.flip-m::after {
+  -webkit-animation-name: after-flip-minutes;
+          animation-name: after-flip-minutes;
+  -webkit-animation-duration: .8s;
+          animation-duration: .8s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+div.card .front.flip-s::after {
+  -webkit-animation-name: after-flip-seconds;
+          animation-name: after-flip-seconds;
+  -webkit-animation-duration: .8s;
+          animation-duration: .8s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+/* PSEUDO-ELEMENT STYLE FOR ALL FRONT AND BACK CARDS */
+.front.d::after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: var(--content-front-days);
+}
+
+.front.h::after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: var(--content-front-hours);
+}
+
+.front.m::after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: var(--content-front-minutes);
+}
+
+.front.s::after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: var(--content-front-seconds);
+}
+
+.back.d::after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: var(--content-back-days);
+}
+
+.back.h::after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: var(--content-back-hours);
+}
+
+.back.m::after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: var(--content-back-minutes);
+}
+
+.back.s::after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: var(--content-back-seconds);
+}
+
+/* GENERAL STYLE FOR ALL BOTTOM CARDS */
+.card-bottom {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  bottom: 0;
+  color: #fb6087;
+  font-family: RedHat-Bold;
+  font-size: 80px;
+  text-transform: none;
+  letter-spacing: none;
+  overflow: hidden;
+  border-radius: 10px;
+  -webkit-transform: rotateX(5deg);
+          transform: rotateX(5deg);
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#31334a));
+  background-image: linear-gradient(to bottom, #31334a);
+}
+
+.card-bottom::after {
+  bottom: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+/* SET ANIMATION AND STYLE FOR PSEUDO-ELEMENTS OF BOTTOM CARDS */
+.card-bottom.d::after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: var(--content-bottom-days);
+}
+
+.card-bottom.d.flip-d::after {
+  -webkit-animation-name: after-flip-days;
+          animation-name: after-flip-days;
+  -webkit-animation-duration: .8s;
+          animation-duration: .8s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+.card-bottom.h::after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: var(--content-bottom-hours);
+}
+
+.card-bottom.h.flip-h::after {
+  -webkit-animation-name: after-flip-hours;
+          animation-name: after-flip-hours;
+  -webkit-animation-duration: .8s;
+          animation-duration: .8s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+.card-bottom.m::after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: var(--content-bottom-minutes);
+}
+
+.card-bottom.m.flip-m::after {
+  -webkit-animation-name: after-flip-minutes;
+          animation-name: after-flip-minutes;
+  -webkit-animation-duration: .8s;
+          animation-duration: .8s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+.card-bottom.s::after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: var(--content-bottom-seconds);
+}
+
+.card-bottom.s.flip-s::after {
+  -webkit-animation-name: after-flip-seconds;
+          animation-name: after-flip-seconds;
+  -webkit-animation-duration: .8s;
+          animation-duration: .8s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+/* SET 'BEFORE' STYLE FOR WRAPPER OF EACH CARD */
+.cards-wrap::before {
+  bottom: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  color: #fb6087;
+  font-family: RedHat-Bold;
+  font-size: 80px;
+  text-transform: none;
+  letter-spacing: none;
+}
+
+.cards-wrap.d::before {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  content: var(--content-wrap-days);
+}
+
+.cards-wrap.h::before {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  content: var(--content-wrap-hours);
+}
+
+.cards-wrap.m::before {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  content: var(--content-wrap-minutes);
+}
+
+.cards-wrap.s::before {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  content: var(--content-wrap-seconds);
+}
+
+/* ADD BLACK CIRCLES ON TOP OF CARDS (LEFT AND RIGHT) */
+.card-style {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  z-index: 111;
+}
+
+.card-style::before, .card-style::after {
+  position: absolute;
+  width: 6px;
+  height: 12px;
+  content: "";
+  top: -6px;
+  background-image: radial-gradient(25px circle, #15161d, transparent);
+  border-radius: 0 6px 6px 0;
+}
+
+.card-style::before {
+  left: 0;
+}
+
+.card-style::after {
+  right: 0;
+  border-radius: 6px 0 0 6px;
+}
+
+/* SOCIAL MEDIA SECTION */
+.social-media {
+  position: absolute;
+  width: 200px;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  bottom: 6rem;
+}
+
+.social-media span {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.social-media span:hover {
+  cursor: pointer;
+}
+
+.social-media .fb-icon {
+  background: url(images/icon-facebook.svg) center center no-repeat;
+}
+
+.social-media .fb-icon:hover {
+  background: url(images/icon-fbPink.svg) center center no-repeat;
+}
+
+.social-media .insta-icon {
+  background: url(images/icon-instagram.svg) center center no-repeat;
+}
+
+.social-media .insta-icon:hover {
+  background: url(images/icon-instagramPink.svg) center center no-repeat;
+}
+
+.social-media .pin-icon {
+  background: url(images/icon-pinterest.svg) center center no-repeat;
+}
+
+.social-media .pin-icon:hover {
+  background: url(images/icon-pinterestPink.svg) center center no-repeat;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1470px) {
+  div.cards-container {
+    width: 75%;
+  }
+  .bgd-img::after {
+    height: 25%;
+  }
+}
+
+@media only screen and (min-width: 1700px) {
+  .bgd-img::after {
+    height: 30%;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  div.cards-wrap div.card .front, div.cards-wrap div.card .back {
+    font-size: 70px;
+  }
+  div.card-bottom {
+    font-size: 70px;
+  }
+  div.cards-wrap::before {
+    font-size: 70px;
+  }
+}
+
+@media only screen and (max-width: 1050px) {
+  div.cards-wrap {
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  div.cards-container {
+    width: 75%;
+  }
+  div.cards-wrap {
+    width: 85%;
+  }
+  div.cards-wrap div.card .front, div.cards-wrap div.card .back {
+    font-size: 65px;
+  }
+  div.card-bottom {
+    font-size: 65px;
+  }
+  div.cards-wrap::before {
+    font-size: 65px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  div.cards-container {
+    width: 90%;
+  }
+  div.cards-container .days p, div.cards-container .hours p, div.cards-container .minutes p, div.cards-container .seconds p {
+    font-size: 12px;
+  }
+  div.cards-wrap {
+    width: 75%;
+  }
+  div.cards-wrap div.card .front, div.cards-wrap div.card .back {
+    font-size: 60px;
+  }
+  div.card-bottom {
+    font-size: 60px;
+  }
+  div.cards-wrap::before {
+    font-size: 60px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  div.cards-container {
+    width: 100%;
+  }
+  div.cards-container .days p, div.cards-container .hours p, div.cards-container .minutes p, div.cards-container .seconds p {
+    font-size: 11px;
+    letter-spacing: 0.3rem;
+  }
+  div.cards-wrap div.card .front, div.cards-wrap div.card .back {
+    font-size: 50px;
+  }
+  div.card-bottom {
+    font-size: 50px;
+  }
+  div.cards-wrap::before {
+    font-size: 50px;
+  }
+}
+
+@media only screen and (max-width: 470px) {
+  h2 {
+    font-size: 1rem;
+    text-align: center;
+    width: 85%;
+  }
+  div.cards-container .days p, div.cards-container .hours p, div.cards-container .minutes p, div.cards-container .seconds p {
+    font-size: 10px;
+    letter-spacing: 0.2rem;
+  }
+  div.cards-wrap {
+    height: 100px;
+    width: 80%;
+  }
+  p.name {
+    font-size: 11px;
+    text-align: center;
+  }
+}
+/*# sourceMappingURL=main.css.map */

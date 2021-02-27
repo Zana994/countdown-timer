@@ -1,0 +1,51 @@
+@font-face {
+    font-family: RedHat-Bold;
+    src: url(fonts/Red_Hat_Text/RedHatText-Bold.ttf);
+}
+
+$bgd-color: hsl(235, 16%, 14%);
+$title-color: hsl(0, 0%, 100%);
+$text-color: hsl(237, 18%, 59%);
+$number-color: hsl(345, 95%, 68%);
+$font-family: RedHat-Bold;
+
+@mixin bgd-style($url) {
+    background: $url center center no-repeat;
+}
+@mixin flex-pos($content, $items, $direction) {
+    display: flex;
+    justify-content: $content;
+    align-items: $items;
+    flex-direction: $direction;
+}
+@mixin text-style($color, $family, $size, $transform, $spacing) {
+    color: $color;
+    font-family: $font-family;
+    font-size: $size;
+    text-transform: $transform;
+    letter-spacing: $spacing;
+}
+@mixin animation-style($name, $origin) {
+    animation-name: $name;
+    animation-duration: .8s;
+    animation-fill-mode: backwards;
+    transform-style: preserve-3d;
+    transform-origin: $origin;
+    
+}
+@mixin animation-style2($name, $mode) {
+    animation-name: $name;
+    animation-duration: .8s;
+    animation-fill-mode: $mode;  
+}
+@mixin pseudo-element-style($width, $height, $content: '') {
+    position: absolute;
+    width: $width;
+    height: $height;
+    content: $content;
+}
+@mixin position-and-size($position, $width, $height) {
+    position: $position;
+    width: $width;
+    height: $height;
+}
