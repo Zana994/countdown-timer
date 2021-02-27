@@ -90,13 +90,12 @@ div.cards-wrap {
     @include position-and-size(relative, 70%, 120px);
     background-image: linear-gradient(to bottom, #2a2c40 50%, #31334a 50%);
     border-radius: 10px;
-    perspective: 400px;
+    perspective: 800px;
     box-shadow: 0 9px 0 0 hsl(234, 17%, 12%);
     .card {
         @include position-and-size(relative, 100%, 50%);
         background-image: linear-gradient(to bottom, #2a2c40);
         border-radius: 10px;
-        transform: rotateX(-5deg);
         .front, .back {
             @include position-and-size(absolute, 100%, 100%);
             @include text-style($number-color, $font-family, 80px, none, none);
@@ -173,7 +172,6 @@ div.card {
     @include text-style($number-color, $font-family, 80px, none, none);
     overflow: hidden;
     border-radius: 10px;
-    transform: rotateX(5deg);
     transform-origin: top;
     background-image: linear-gradient(to bottom, #31334a);
     &::after {
@@ -268,7 +266,7 @@ div.card {
 /* MEDIA QUERIES */
 
 @media only screen and (min-width: 1470px) {
-    div.cards-container { width: 75%;}
+    /*div.cards-container { width: 75%;}*/
     .bgd-img {
         &::after { height: 25%;}
     }
@@ -292,12 +290,12 @@ div.card {
 }
 
 @media only screen and (max-width: 1050px) {
-    div.cards-wrap { width: 75%;}
+    /*div.cards-wrap { width: 75%;}*/
 }
 @media only screen and (max-width: 900px) {
     div.cards-container { width: 75%;}
     div.cards-wrap {
-        width: 85%;
+        /*width: 85%;*/
         div.card {
             .front, .back { font-size: 65px;}
         }
