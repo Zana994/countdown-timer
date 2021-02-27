@@ -353,10 +353,14 @@ div.card {
             }
         }
     }
-    div.cards-wrap {
-        height: 100px;
-        width: 80%;
+    div.cards-wrap { 
+        width: 85%;
+        div.card {
+            .front, .back { font-size: 47px;}
+        }
     }
+    div.card-bottom { font-size: 47px;}
+    div.cards-wrap::before { font-size: 47px;}
     p.name { 
         font-size: 11px;
         text-align: center;

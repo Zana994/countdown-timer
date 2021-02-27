@@ -772,8 +772,16 @@ div.card .front.flip-s::after {
     letter-spacing: 0.2rem;
   }
   div.cards-wrap {
-    height: 100px;
-    width: 80%;
+    width: 85%;
+  }
+  div.cards-wrap div.card .front, div.cards-wrap div.card .back {
+    font-size: 47px;
+  }
+  div.card-bottom {
+    font-size: 47px;
+  }
+  div.cards-wrap::before {
+    font-size: 47px;
   }
   p.name {
     font-size: 11px;
