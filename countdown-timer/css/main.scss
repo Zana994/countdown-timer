@@ -68,7 +68,8 @@ h2 {
 p.name {
     position: absolute;
     @include text-style($text-color, $font-family, inherit, none, 0.1rem);
-    bottom: 2rem;
+    bottom: 0;
+    margin-bottom: 2rem;
 }
 
 .cards-container {
@@ -240,7 +241,8 @@ div.card {
 .social-media {
     @include position-and-size(absolute, 200px, 30px);
     @include flex-pos(space-evenly, center, row);
-    bottom: 6rem;
+    bottom: 2rem;
+    margin-bottom: 2rem;
     span {
         width: 24px;
         height: 24px;

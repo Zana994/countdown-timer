@@ -192,7 +192,8 @@ p.name {
   font-size: inherit;
   text-transform: none;
   letter-spacing: 0.1rem;
-  bottom: 2rem;
+  bottom: 0;
+  margin-bottom: 2rem;
 }
 
 .cards-container {
@@ -326,8 +327,8 @@ div.card.flip {
           animation-name: flip;
   -webkit-animation-duration: .6s;
           animation-duration: .6s;
-  -webkit-animation-fill-mode: backwards;
-          animation-fill-mode: backwards;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
   -webkit-transform-origin: bottom;
@@ -625,7 +626,8 @@ div.card .front.flip-s::after {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  bottom: 6rem;
+  bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 .social-media span {

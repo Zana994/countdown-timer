@@ -28,10 +28,9 @@ $font-family: RedHat-Bold;
 @mixin animation-style($name, $origin) {
     animation-name: $name;
     animation-duration: .6s;
-    animation-fill-mode: backwards;
+    animation-fill-mode: forwards;
     transform-style: preserve-3d;
     transform-origin: $origin;
-    
 }
 @mixin animation-style2($name, $mode) {
     animation-name: $name;
